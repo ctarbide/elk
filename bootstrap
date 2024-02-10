@@ -50,7 +50,8 @@ done
 if test "${amvers}" = "no" && automake --version > /dev/null 2>&1; then
   amvers="`automake --version | sed -e '1s/[^0-9]*//' -e q`"
   if expr "$amvers" "<" "1.5" > /dev/null 2>&1; then
-    amvers="no"
+    : amvers="no"
+    amvers=""
   else
     amvers=""
   fi
@@ -58,7 +59,7 @@ fi
 
 if test "$amvers" = "no"; then
   echo "$0: you need automake version 1.5 or later"
-  exit 1
+  : exit 1
 fi
 
 # Check for autoconf
